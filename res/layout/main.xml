@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<ImageView
+		android:layout_height="200dp"
+		android:layout_width="wrap_content"
+		android:src="@drawable/web"
+		android:id="@+id/picMain"
+		android:layout_gravity="center"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Configuration"
+		android:onClick="configs"
+		android:layout_width="match_parent"
+		android:layout_gravity="center_horizontal"
+		android:id="@+id/btnConfig"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Player Database"
+		android:onClick="getPlayers"
+		android:layout_width="match_parent"
+		android:id="@+id/btnPlayerDB"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Run the Server"
+		android:layout_width="match_parent"
+		android:onClick="startServer"
+		android:id="@+id/btnRun"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Help"
+		android:layout_width="match_parent"
+		android:id="@+id/btnHelp"
+		android:onClick="openHelp"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		style="?android:attr/buttonStyleSmall"
+		android:text="Exit"
+		android:layout_width="match_parent"
+		android:layout_gravity="center_horizontal"
+		android:id="@+id/btnExit"
+		android:onClick="exit"/>
+
+</LinearLayout>
+

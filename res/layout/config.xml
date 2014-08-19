@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:background="#528813">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Server Configuration"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/configTextView1"/>
+
+	<RelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:layout_below="@id/configTextView1"
+		android:layout_centerHorizontal="true"
+		android:background="#868613"
+		android:id="@+id/configRelativeLayout1">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Server Details"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/configTextView2"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Server Name:"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/configTextView2"
+			android:id="@+id/configTextView3"/>
+
+		<EditText
+			android:layout_height="40dp"
+			android:ems="10"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/configTextView3"
+			android:layout_below="@id/configTextView2"
+			android:id="@+id/txtServerName"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="MOTD:"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/txtServerName"/>
+
+		<EditText
+			android:layout_height="40dp"
+			android:ems="10"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/txtServerName"
+			android:layout_alignRight="@id/txtServerName"
+			android:id="@+id/txtM"/>
+
+		<Button
+			android:layout_height="40dp"
+			android:text="\?"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/txtServerName"
+			android:layout_alignBottom="@id/txtServerName"
+			android:id="@+id/configButton1"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="\?"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/configButton1"
+			android:layout_alignBottom="@id/txtM"
+			android:layout_toRightOf="@id/txtM"
+			android:id="@+id/configButton2"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Server Port"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/txtM"/>
+
+		<EditText
+			android:layout_height="40dp"
+			android:ems="10"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/txtM"
+			android:layout_alignRight="@id/txtM"
+			android:id="@+id/txtPort"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="\?"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/configButton2"
+			android:layout_alignBottom="@id/txtPort"
+			android:layout_toRightOf="@id/txtPort"
+			android:id="@+id/configButton3"/>
+
+		<Button
+			android:layout_height="40dp"
+			android:text="Check"
+			android:id="@+id/btnPort"
+			android:onClick="checkPort"
+			android:layout_width="wrap_content"
+			android:layout_below="@id/configButton3"
+			android:layout_alignRight="@id/configButton3"/>
+
+	</RelativeLayout>
+
+</RelativeLayout>
+
+

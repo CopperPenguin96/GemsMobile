@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:background="#8E8815">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="(Server Name)"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:id="@+id/lblServerName"
+		android:background="#107908"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:layout_width="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:id="@+id/txtCommand"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Send"
+		android:layout_width="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:id="@+id/btnSend"
+		android:layout_alignRight="@id/txtCommand"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="GemsCraft Server Console"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_below="@id/lblServerName"
+		android:textColor="#FFFFFF"
+		android:background="#000000"
+		android:id="@+id/txtConsole"
+		android:layout_above="@id/btnSend"/>
+
+</RelativeLayout>
+
+
