@@ -20,6 +20,7 @@ import com.AandC.GemsCraft.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import com.AandC.GemsCraft.Configuration.*;
 
 public class Heartbeat {
 
