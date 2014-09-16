@@ -1,6 +1,4 @@
-package com.AandC.GemsCraft.Console;
-import com.AandC.GemsCraft.Exceptions.*;
-import com.AandC.GemsCraft.Console.LogTypes.*;
+package com.AandC.GemsCraft.Console.LogTypes;
 /*
  The MIT License (MIT)
 
@@ -24,18 +22,12 @@ import com.AandC.GemsCraft.Console.LogTypes.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class Log
+public class Normal
 {
-	public Log(String message) throws InvalidLogException {
-		if (message.equals(null)) {
-			throw new InvalidLogException("Log Message cannot be null",
-				new NullPointerException());
-		}
-	}
-	public Log(String message, LogType lType) throws InvalidLogException {
-		if (message.equals(null) || lType.equals(null)) {
-			throw new InvalidLogException("Log Message cannot be null",
-										  new NullPointerException());
-		}
+	public String logTypeName;
+	public String hexColor;
+	public Normal() {
+		logTypeName = "normal";
+		hexColor = "#FFFFFF";
 	}
 }

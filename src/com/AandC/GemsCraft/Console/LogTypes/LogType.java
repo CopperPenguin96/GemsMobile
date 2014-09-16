@@ -1,6 +1,5 @@
-package com.AandC.GemsCraft.Console;
+package com.AandC.GemsCraft.Console.LogTypes;
 import com.AandC.GemsCraft.Exceptions.*;
-import com.AandC.GemsCraft.Console.LogTypes.*;
 /*
  The MIT License (MIT)
 
@@ -24,18 +23,15 @@ import com.AandC.GemsCraft.Console.LogTypes.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class Log
+ 
+ 
+//The Base Class for Log Types....
+//DO NOT USE THIS CLASS UNLESS YOU ARE CREATING A SUBCLASS
+public class LogType
 {
-	public Log(String message) throws InvalidLogException {
-		if (message.equals(null)) {
-			throw new InvalidLogException("Log Message cannot be null",
-				new NullPointerException());
-		}
-	}
-	public Log(String message, LogType lType) throws InvalidLogException {
-		if (message.equals(null) || lType.equals(null)) {
-			throw new InvalidLogException("Log Message cannot be null",
-										  new NullPointerException());
-		}
+	public String logTypeName;
+	public String hexColor;
+	public LogType() {
+		throw new NullPointerException("Do not use the default LogType Class");
 	}
 }
