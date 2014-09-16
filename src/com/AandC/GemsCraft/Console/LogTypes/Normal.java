@@ -22,7 +22,7 @@ package com.AandC.GemsCraft.Console.LogTypes;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class Normal
+public class Normal extends LogType
 {
 	public String logTypeName;
 	public String hexColor;

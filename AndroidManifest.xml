@@ -21,23 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity
-            android:label="GemsCraft Help Guides"
-            android:name=".Help" > </activity>
-		<activity
-			android:label="GemsCraft Server Config"
-			android:name=".Config"></activity>
-		<activity
-			android:name=".PlayerDatabase"
-			android:label="Player Database"
-		> </activity>
-		<activity
-			android:label="GemsCraft Server Config"
-			android:name="com.AandC.GemsCraft.Constants.Configuration"></activity>
- 
-		<activity
-			android:label="Server"
-			android:name="com.AandC.GemsCraft.Server"></activity>
+		
 </application>
 
 </manifest>

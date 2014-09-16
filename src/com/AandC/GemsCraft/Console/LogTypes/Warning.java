@@ -1,5 +1,4 @@
 package com.AandC.GemsCraft.Console.LogTypes;
-import com.AandC.GemsCraft.Exceptions.*;
 /*
  The MIT License (MIT)
 
@@ -23,15 +22,12 @@ import com.AandC.GemsCraft.Exceptions.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
- 
- 
-//The Base Class for Log Types....
-//DO NOT USE THIS CLASS UNLESS YOU ARE CREATING A SUBCLASS
-public class LogType
+public class Warning extends LogType
 {
 	public String logTypeName;
 	public String hexColor;
-	public LogType() {
-		//Do nothing
+	public Warning() {
+		logTypeName = "normal";
+		hexColor = "#FFFF00";
 	}
 }

@@ -1,6 +1,9 @@
 package com.AandC.GemsCraft.Console;
 import com.AandC.GemsCraft.Exceptions.*;
+import com.AandC.GemsCraft.Console.*;
 import com.AandC.GemsCraft.Console.LogTypes.*;
+import com.AandC.GemsCraft.*;
+import android.text.*;
 /*
  The MIT License (MIT)
 
@@ -30,6 +33,8 @@ public class Log
 		if (message.equals(null)) {
 			throw new InvalidLogException("Log Message cannot be null",
 				new NullPointerException());
+		} else {
+			write(message, new Normal());
 		}
 	}
 	public Log(String message, LogType lType) throws InvalidLogException {
@@ -38,4 +43,12 @@ public class Log
 										  new NullPointerException());
 		}
 	}
+	String htmlStart = "<html><body>";
+	String htmlEnd = "</body></html>";
+	void write(String message, LogType l) {
+		htmlStart += "<p style=\"" + l.hexColor + "\"</p>";
+		String finalMessage = htmlStart + htmlEnd;
+		Constants.consoleTextView.setText(Html.fromHtml(finalMessage));
+	}
+	
 }
