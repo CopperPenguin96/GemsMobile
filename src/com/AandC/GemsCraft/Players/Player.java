@@ -32,6 +32,7 @@ public class Player
 	public int posX;
 	public int posY;
 	public int posZ;
+	public boolean isAFK;
 	public void performCommand(Command cmd) {
 		cmd.run(this);
 	}

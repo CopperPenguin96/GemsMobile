@@ -25,5 +25,6 @@ import com.AandC.GemsCraft.World.*;
  */
 public class BlockStone extends Block
 {
+	@Override
 	int ID = 0001;
 }

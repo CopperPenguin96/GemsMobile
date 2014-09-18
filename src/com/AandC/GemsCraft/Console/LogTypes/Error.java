@@ -24,8 +24,11 @@ package com.AandC.GemsCraft.Console.LogTypes;
  */
 public class Error extends LogType
 {
+	@Override
 	public String logTypeName;
+	@Override
 	public String hexColor;
+	@Override
 	public Error() {
 		logTypeName = "normal";
 		hexColor = "#FF0000";

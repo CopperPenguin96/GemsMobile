@@ -24,8 +24,11 @@ package com.AandC.GemsCraft.Console.LogTypes;
  */
 public class Normal extends LogType
 {
+	@Override
 	public String logTypeName;
+	@Override
 	public String hexColor;
+	@Override
 	public Normal() {
 		logTypeName = "normal";
 		hexColor = "#FFFFFF";
