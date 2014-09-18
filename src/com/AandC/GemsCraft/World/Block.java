@@ -1,6 +1,4 @@
-package com.AandC.GemsCraft.Players;
-import com.AandC.GemsCraft.World.*;
-import com.AandC.GemsCraft.Commands.*;
+package com.AandC.GemsCraft.World;
 /*
  The MIT License (MIT)
 
@@ -24,15 +22,7 @@ import com.AandC.GemsCraft.Commands.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class Player
+public class Block
 {
-	public String Nick;
-	public String userName;
-	public Block heldBlock;
-	public int posX;
-	public int posY;
-	public int posZ;
-	public void performCommand(Command cmd) {
-		cmd.run(this);
-	}
+	public int ID = 0000;
 }
