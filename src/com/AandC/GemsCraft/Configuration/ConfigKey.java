@@ -25,15 +25,28 @@ package com.AandC.GemsCraft.Configuration;
 public class ConfigKey
 {
 	//Server Port
-	private static int Port;
 	public static int getPort() {
 		return 0;
 	}
 	public static void setPort() {
-		try {
-			
-		} catch (NumberFormatException e) {
-			
-		}
+		
+	}
+	
+	//Server Name
+	private static String ServerName;
+	public static String getServerName() {
+		return ServerName;
+	}
+	public static void setServerName() {
+		
+	}
+	
+	//Online Mode
+	private static boolean onlineMode;
+	public static boolean getOnlineMode() {
+		return onlineMode;
+	}
+	public static void setOnlineMode() {
+		
 	}
 }
