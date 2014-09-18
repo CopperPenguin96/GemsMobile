@@ -7,4 +7,5 @@
 <classpathentry kind="lib" path="/storage/emulated/0/AppProjects/GemsMobile/libs/android-support-v4.jar"/>
 <classpathentry kind="lib" path="/storage/emulated/0/AppProjects/GemsMobile/libs/jetbrains-annotations.jar"/>
 <classpathentry kind="lib" path="/storage/emulated/0/AppProjects/GemsMobile/libs/tcp.jar"/>
+<classpathentry kind="lib" path="/storage/emulated/0/AppProjects/GemsMobile/libs/jnbt-1.1.jar"/>
 </classpath>
