@@ -1,8 +1,5 @@
-package com.AandC.GemsCraft.Players;
-import com.AandC.GemsCraft.World.*;
-import com.AandC.GemsCraft.Commands.*;
-import com.AandC.GemsCraft.Console.*;
-import com.AandC.GemsCraft.Exceptions.*;
+package com.AandC.GemsCraft.World.ClassicWorld;
+import org.jnbt.*;
 /*
  The MIT License (MIT)
 
@@ -26,34 +23,8 @@ import com.AandC.GemsCraft.Exceptions.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class Console extends Player
+public interface IMetadataStructure
 {
-	@Override
-	public String Nick = "Console";
-	@Override
-	public String userName = "Console";
-	@Override
-	public Block heldBlock = null;
-	@Override
-	public int posX = 0;
-	@Override
-	public int posY = 0;
-	@Override
-	public int posZ = 0;
-	@Override
-	public boolean isAFK = false;
-	@Override
-	public void performCommand(Command cmd) {
-		cmd.run(this);
-	}
-
-	@Override
-	public void message(String mes){
-		try
-		{
-			Log mess = new Log(mes);
-		} catch (InvalidLogException e) {
-			e.printStackTrace();
-		}
-	}
+	CompoundTag Read(CompoundTag metadata);
+	CompoundTag Write();
 }

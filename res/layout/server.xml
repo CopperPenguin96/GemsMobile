@@ -28,6 +28,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentRight="true"
 		android:id="@+id/btnSend"
+		android:onClick="performAction"
 		android:layout_alignRight="@id/txtCommand"/>
 
 	<TextView

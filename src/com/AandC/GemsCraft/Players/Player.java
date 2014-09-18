@@ -36,4 +36,7 @@ public class Player
 	public void performCommand(Command cmd) {
 		cmd.run(this);
 	}
+	public void message(String message) {
+		
+	}
 }

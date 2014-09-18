@@ -1,5 +1,8 @@
 package com.AandC.GemsCraft.Network;
 import com.AandC.GemsCraft.Players.*;
+import com.AandC.GemsCraft.Console.LogTypes.*;
+import com.AandC.GemsCraft.Console.*;
+import com.AandC.GemsCraft.Exceptions.*;
 /*
  The MIT License (MIT)
 
@@ -25,9 +28,6 @@ import com.AandC.GemsCraft.Players.*;
  */
 public class Server
 {
-	public static void message(String message) {
-		
-	}
 	public static Player[] players() {
 		return new Player[] {
 			
@@ -38,4 +38,23 @@ public class Server
 	}
 	public static Heartbeat heartBeat;
 	public static String URL;
+	public static void message(String mes) {
+		if (mes.equals(null)) {
+			throw new NullPointerException();
+		} else {
+			try {
+				for (Player p:players()) {
+					p.message(mes);
+				}
+				Log l = new Log(mes);
+			} catch (Exception e) {
+				try
+				{
+					Log log = new Log(e.getStackTrace().toString());
+				} catch (InvalidLogException ec) {
+					ec.printStackTrace();
+				}
+			}
+		}
+	}
 }

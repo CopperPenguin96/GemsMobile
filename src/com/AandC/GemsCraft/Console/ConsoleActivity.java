@@ -7,6 +7,9 @@ import android.widget.*;
 import com.AandC.GemsCraft.Exceptions.*;
 import com.AandC.GemsCraft.Console.LogTypes.*;
 import com.AandC.GemsCraft.Network.*;
+import android.view.*;
+import com.AandC.GemsCraft.Commands.*;
+import com.AandC.GemsCraft.Players.*;
 /*
  The MIT License (MIT)
 
@@ -33,6 +36,7 @@ import com.AandC.GemsCraft.Network.*;
 public class ConsoleActivity extends Activity
 {
 	@Override
+	final Console console = new Console();
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
 		setContentView(R.layout.server);
@@ -47,6 +51,33 @@ public class ConsoleActivity extends Activity
 				Server.URL);
 		} catch (InvalidLogException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void performAction(View v) {
+		EditText cmdBox = (EditText) findViewById(R.id.txtCommand);
+		String enteredText = cmdBox.getText().toString();
+		if (!enteredText.equals(null)) {
+			if (enteredText.substring(0,0).equals("/")) {
+				String cmdLower = enteredText.toLowerCase();
+				for (Command list:Commands.cmdList) {
+					if (list.name.toLowerCase().equals(cmdLower)) {
+						console.performCommand(list);
+					} else {
+						boolean foundGoodAl = false;
+						for (String alis:list.alliases) {
+							if (alis.toLowerCase().equals(cmdLower)) {
+								foundGoodAl = true;
+							}
+						}
+						if (foundGoodAl) {
+							console.performCommand(list);
+						} else {
+							console.message("No such command \"" + enteredText + "\"");
+						}
+					}
+				}
+			}
 		}
 	}
 }
