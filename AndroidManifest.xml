@@ -21,7 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+		<activity
+			android:label="GemsCraft Server Config"
+			android:name=".Configuration.ConfigActivity">
+		</activity>
 		
+		<activity
+			android:label="GemsCraft Server"
+			android:name=".Console.ConsoleActivity">
+		</activity>
 </application>
 
 </manifest>

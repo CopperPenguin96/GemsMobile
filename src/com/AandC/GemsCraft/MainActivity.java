@@ -4,6 +4,9 @@ import android.app.*;
 import android.content.*;
 import android.os.*;
 import android.view.*;
+import com.AandC.GemsCraft.Configuration.*;
+import com.AandC.GemsCraft.System.*;
+import com.AandC.GemsCraft.Console.*;
 /*
 	The MIT License (MIT)
 
@@ -31,11 +34,19 @@ public class MainActivity extends Activity
 {
     /** Called when the activity is first created. */
     @Override
-	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		
+		Constants.time.setToNow();
+		Contexts.mainActivityContext = this;
 	}
-	
+	public void config(View v) {
+		startActivity(new Intent(this, ConfigActivity.class));
+	}
+	public void exit(View v) {
+		System.exit(0);
+	}
+	public void startServer(View v) {
+		startActivity(new Intent(this, ConsoleActivity.class));
+	}
 }

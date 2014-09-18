@@ -4,6 +4,8 @@ import com.AandC.GemsCraft.Console.*;
 import com.AandC.GemsCraft.Console.LogTypes.*;
 import com.AandC.GemsCraft.*;
 import android.text.*;
+import android.text.format.*;
+import com.AandC.GemsCraft.System.*;
 /*
  The MIT License (MIT)
 
@@ -35,20 +37,27 @@ public class Log
 				new NullPointerException());
 		} else {
 			write(message, new Normal());
+			System.out.println("xxxxxxx");
 		}
 	}
 	public Log(String message, LogType lType) throws InvalidLogException {
 		if (message.equals(null) || lType.equals(null)) {
 			throw new InvalidLogException("Log Message cannot be null",
 										  new NullPointerException());
+		} else {
+			write(message, lType);
 		}
 	}
-	String htmlStart = "<html><body>";
+	
 	String htmlEnd = "</body></html>";
 	void write(String message, LogType l) {
-		htmlStart += "<p style=\"" + l.hexColor + "\"</p>";
-		String finalMessage = htmlStart + htmlEnd;
+		Constants.htmlStart += "<p style=\"" + l.hexColor + "\"" + "> " +
+			"&#60 " + Constants.getTime() + " &#62" + " " +
+			message + "</p>";
+		String finalMessage = Constants.htmlStart + htmlEnd;
 		Constants.consoleTextView.setText(Html.fromHtml(finalMessage));
+		System.out.println(finalMessage);
 	}
+	
 	
 }

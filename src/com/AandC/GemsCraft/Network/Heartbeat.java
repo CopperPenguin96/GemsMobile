@@ -51,6 +51,7 @@ public class Heartbeat {
 				connection.close();
 				if(!this.already_printed_url) {
 					System.out.println(("Use this url to play: "+new String(b)));
+					Server.URL = new String(b);
 					FileOutputStream f = new FileOutputStream(new File("/sdcard/GemsCraft/externalurl.txt"));
 					f.write(b);
 					f.close();
