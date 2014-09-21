@@ -91,17 +91,7 @@ public class ConsoleActivity extends Activity
 				lst.p = getConsoleInfo();
 				getConsoleInfo().performCommand(lst);
 			} catch (NullPointerException e) {
-				String x = "Error! ";
-				for (StackTraceElement s:e.getStackTrace()) {
-					x += s.toString() + "\n";
-				}
-				try
-				{
-					Log log = new Log(x);
-				}
-				catch (InvalidLogException ex) {
-					System.exit(0);
-				}
+				new Logs(e);
 			}
 		} else {
 			if (!foundGoodAl[1]) {
