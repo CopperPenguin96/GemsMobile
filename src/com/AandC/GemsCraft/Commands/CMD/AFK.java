@@ -5,23 +5,36 @@ import com.AandC.GemsCraft.Network.*;
 
 public class AFK extends Command
 {
+	private String name = "AFK";
 	@Override
-	public String name = "AFK";
-	@Override
-	public String[] alliases = new String[] {
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	private String[] alliases = new String[] {
 		"away"
 	};
 	@Override
-	public boolean isVisible = true;
+	public String[] getAlliases()
+	{
+		return this.alliases;
+	}
+	
+	private boolean isVisible = true;
+	@Override
+	public boolean getVisibility() {
+		return isVisible;
+	}
 
 	@Override
-	public void run(Player player)
+	public void run()
 	{
-		if (!player.isAFK) {
-			player.isAFK = true;
-			Server.message(player.Nick + "is now AFK");
+		if (!p.isAFK) {
+			p.isAFK = true;
+			Server.message(p.Nick + " is now AFK");
 		} else {
-			player.message("You are already AFK!");
+			p.message("You are already AFK!");
 		}
 	}
 }

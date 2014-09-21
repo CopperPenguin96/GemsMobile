@@ -10,6 +10,7 @@ import com.AandC.GemsCraft.Network.*;
 import android.view.*;
 import com.AandC.GemsCraft.Commands.*;
 import com.AandC.GemsCraft.Players.*;
+import android.text.method.*;
 /*
  The MIT License (MIT)
 
@@ -36,10 +37,10 @@ import com.AandC.GemsCraft.Players.*;
 public class ConsoleActivity extends Activity
 {
 	@Override
-	final Console console = new Console();
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
 		setContentView(R.layout.server);
+		getConsoleInfo();
 		Constants.consoleTextView = (TextView) findViewById(R.id.txtConsole);
 		try
 		{
@@ -49,35 +50,71 @@ public class ConsoleActivity extends Activity
 			Server.heartBeat.run();
 			Log serverURL = new Log("Your server is running with URL " +
 				Server.URL);
+			Constants.consoleTextView.setMovementMethod(new ScrollingMovementMethod());
 		} catch (InvalidLogException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void performAction(View v) {
+		boolean[] foundGoodAl = new boolean[]{
+			false, false
+		};
+		Command lst = null;
 		EditText cmdBox = (EditText) findViewById(R.id.txtCommand);
 		String enteredText = cmdBox.getText().toString();
 		if (!enteredText.equals(null)) {
-			if (enteredText.substring(0,0).equals("/")) {
-				String cmdLower = enteredText.toLowerCase();
+			System.out.println(enteredText);
+			if (enteredText.substring(0,1).equals("/")) {
+				String cmdLower = enteredText.toLowerCase().substring(1);
+				System.out.println(cmdLower);
 				for (Command list:Commands.cmdList) {
-					if (list.name.toLowerCase().equals(cmdLower)) {
-						console.performCommand(list);
+					System.out.println(list.getName());
+					if (list.getName().toLowerCase().equals(cmdLower)) {
+						list.p = getConsoleInfo();
+						getConsoleInfo().performCommand(list);
+						foundGoodAl[1] = true;
 					} else {
-						boolean foundGoodAl = false;
-						for (String alis:list.alliases) {
+						for (String alis:list.getAlliases()) {
 							if (alis.toLowerCase().equals(cmdLower)) {
-								foundGoodAl = true;
+								System.out.println("Found an allias");
+								foundGoodAl[0] = true;
+								lst = list;
 							}
-						}
-						if (foundGoodAl) {
-							console.performCommand(list);
-						} else {
-							console.message("No such command \"" + enteredText + "\"");
 						}
 					}
 				}
 			}
 		}
+		if (foundGoodAl[0]) {
+			try {
+				lst.p = getConsoleInfo();
+				getConsoleInfo().performCommand(lst);
+			} catch (NullPointerException e) {
+				String x = "Error! ";
+				for (StackTraceElement s:e.getStackTrace()) {
+					x += s.toString() + "\n";
+				}
+				try
+				{
+					Log log = new Log(x);
+				}
+				catch (InvalidLogException ex) {
+					System.exit(0);
+				}
+			}
+		} else {
+			if (!foundGoodAl[1]) {
+				getConsoleInfo().message("No such command \"" + "/" + enteredText.substring(1) + "\"");
+			}
+		}
+	}
+	public Player getConsoleInfo() {
+		Player con = new Player();
+		con.heldBlock = null;
+		con.isAFK = false;
+		con.Nick = "Console";
+		con.userName = "console";
+		return con;
 	}
 }

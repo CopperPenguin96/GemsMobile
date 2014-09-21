@@ -34,7 +34,7 @@ public class Player
 	public int posZ;
 	public boolean isAFK;
 	public void performCommand(Command cmd) {
-		cmd.run(this);
+		cmd.run();
 	}
 	public void message(String message) {
 		

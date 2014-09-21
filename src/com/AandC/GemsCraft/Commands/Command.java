@@ -5,18 +5,40 @@ import com.AandC.GemsCraft.Players.*;
 
 public class Command
 {
-	public String name = "Default";
-	public String[] alliases = new String[]{
+	//When creating a new command, each method and
+	//function needs and Override before it
+	
+	//What users see and enter
+	private String name = "Default";
+	public String getName() {
+		return name;
+	}
+	
+	//The player running the command
+	public Player p;
+	
+	//other keys to entering the command
+	private String[] alliases = new String[]{
 		"df","cmd"
 	};
-	public boolean isVisible = false;
-	public void run(Player player) {
+	public String[] getAlliases() {
+		return alliases;
+	}
+	
+	//Will this appear in /Commands?
+	private boolean isVisible = false;
+	public boolean getVisibility() {
+		return isVisible;
+	}
+	
+	//This is where you actually code for the command
+	public void run() {
 		try
 		{
 			Log thisLog = new Log("Default Command Template was run" +
-				"by " + player.userName);
+				" by " + p.userName);
 		} catch (InvalidLogException e) {
-			
+			e.printStackTrace();
 		}
 	}
 }
