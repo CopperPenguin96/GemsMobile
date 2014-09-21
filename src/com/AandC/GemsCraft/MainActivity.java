@@ -7,6 +7,8 @@ import android.view.*;
 import com.AandC.GemsCraft.Configuration.*;
 import com.AandC.GemsCraft.System.*;
 import com.AandC.GemsCraft.Console.*;
+import java.io.*;
+import org.json.simple.parser.*;
 /*
 	The MIT License (MIT)
 
@@ -39,6 +41,14 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
 		Constants.time.setToNow();
 		Contexts.mainActivityContext = this;
+		try
+		{
+			ConfigKey.prepareConfig();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public void config(View v) {
 		startActivity(new Intent(this, ConfigActivity.class));

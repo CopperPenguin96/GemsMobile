@@ -3,6 +3,9 @@ import android.app.*;
 import android.os.*;
 import com.AandC.GemsCraft.*;
 import com.AandC.GemsCraft.System.*;
+import android.widget.*;
+import org.json.*;
+import java.io.*;
 /*
  The MIT License (MIT)
 
@@ -29,9 +32,22 @@ import com.AandC.GemsCraft.System.*;
 public class ConfigActivity extends Activity
 {
 	@Override
+	private EditText[] textBoxes = new EditText[3];
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
 		setContentView(R.layout.config);
 		Contexts.configActivityContext = this;
+		textBoxes[0] = (EditText) findViewById(R.id.txtServerName);
+		textBoxes[1] = (EditText) findViewById(R.id.txtPorts);
+		textBoxes[2] = (EditText) findViewById(R.id.txtM);
+		ConfigKey.configs = this.textBoxes;
+		loadConfig();
+	}
+	void loadConfig() {
+		if (Config.configFile.exists()) {
+			textBoxes[0].setText(ConfigKey.getServerName());
+			textBoxes[1].setText("" + ConfigKey.getPort());
+			textBoxes[2].setText(ConfigKey.getMOTD());
+		}
 	}
 }

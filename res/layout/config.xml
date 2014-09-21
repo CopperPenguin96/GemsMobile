@@ -89,15 +89,15 @@
 			android:layout_width="wrap_content"
 			android:layout_below="@id/txtM"
 			android:layout_alignRight="@id/txtM"
-			android:id="@+id/txtPort"/>
+			android:id="@+id/txtPorts"/>
 
 		<Button
 			android:layout_height="wrap_content"
 			android:text="\?"
 			android:layout_width="wrap_content"
 			android:layout_below="@id/configButton2"
-			android:layout_alignBottom="@id/txtPort"
-			android:layout_toRightOf="@id/txtPort"
+			android:layout_alignBottom="@id/txtPorts"
+			android:layout_toRightOf="@id/txtPorts"
 			android:id="@+id/configButton3"/>
 
 		<Button
@@ -110,6 +110,29 @@
 			android:layout_alignRight="@id/configButton3"/>
 
 	</RelativeLayout>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Save"
+		android:layout_width="match_parent"
+		android:layout_below="@id/configRelativeLayout1"
+		android:id="@+id/btnSave"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		style="?android:attr/buttonStyleSmall"
+		android:text="Clear"
+		android:layout_width="match_parent"
+		android:layout_below="@id/btnSave"
+		android:id="@+id/btnClear"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		style="?android:attr/buttonStyleSmall"
+		android:text="Exit Config"
+		android:layout_width="match_parent"
+		android:layout_below="@id/btnClear"
+		android:id="@+id/btnExit"/>
 
 </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.AandC.GemsCraft.System;
 import android.content.*;
+import com.AandC.GemsCraft.Console.*;
 /*
  The MIT License (MIT)
 
@@ -27,5 +28,6 @@ public class Contexts
 {
 	public static Context mainActivityContext;
 	public static Context configActivityContext;
+	public static Context consoleActivityContext;
 	
 }

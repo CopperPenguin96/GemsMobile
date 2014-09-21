@@ -41,6 +41,7 @@ public class ConsoleActivity extends Activity
 		super.onCreate(b);
 		setContentView(R.layout.server);
 		getConsoleInfo();
+		Contexts.consoleActivityContext = this;
 		Constants.consoleTextView = (TextView) findViewById(R.id.txtConsole);
 		try
 		{

@@ -1,6 +1,4 @@
-package com.AandC.GemsCraft;
-import android.app.*;
-import android.content.*;
+package com.AandC.GemsCraft.Exceptions;
 /*
  The MIT License (MIT)
 
@@ -24,13 +22,17 @@ import android.content.*;
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-public class MsgBox
-{
-	private static AlertDialog ad;
-	public static void show(String title, String message, Context c) {
-		ad = new AlertDialog.Builder(c).create();
-		ad.setMessage(message);
-		ad.setTitle(title);
-		ad.show();
+public class InvalidConfigException extends Exception {
+	public InvalidConfigException() {
+		super();
+	}
+	public InvalidConfigException(String message) {
+		super(message);
+	}
+	public InvalidConfigException(String message, Throwable cause) {
+		super(message,cause);
+	}
+	public InvalidConfigException(Throwable cause) {
+		super(cause);
 	}
 }

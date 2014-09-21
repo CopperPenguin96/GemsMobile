@@ -1,4 +1,11 @@
 package com.AandC.GemsCraft.Configuration;
+import android.widget.*;
+import com.AandC.GemsCraft.*;
+import com.AandC.GemsCraft.System.*;
+import java.io.*;
+import java.util.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 /*
  The MIT License (MIT)
 
@@ -24,21 +31,69 @@ package com.AandC.GemsCraft.Configuration;
  */
 public class ConfigKey
 {
+	
+	public static void prepareConfig() throws IOException, ParseException {
+		
+	}
+	public static boolean isInConfig;
+	public static EditText[] configs;
+	static boolean isNull(Object o) {
+		if (o.equals(null)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	//Server Port
+	private static int port;
 	public static int getPort() {
-		return 0;
+		try {
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("/sdcard/GemsCraft/config.json"));
+			JSONObject jsonObject = (JSONObject) obj;
+			port = jsonObject.get("Port");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return port;
 	}
 	public static void setPort() {
-		
+		int maxPort = 65535;
+		try {
+			int enteredPort = Integer.parseInt(configs[1].getText().toString());
+			if (enteredPort < 0) {
+				MsgBox.show("Error!", "Port is too low!", Contexts.configActivityContext);
+			} else if (enteredPort > maxPort) {
+				MsgBox.show("Error!", "Port is too high!", Contexts.configActivityContext);
+			} else if (0 < enteredPort) {
+				if (enteredPort < maxPort) {
+					port = enteredPort;
+				}
+			}
+		} catch (NumberFormatException e) {
+			MsgBox.show("Error!", "NonNumbers in Port", Contexts.configActivityContext);
+		}
 	}
 	
 	//Server Name
 	private static String ServerName;
 	public static String getServerName() {
+		try {
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("/sdcard/GemsCraft/config.json"));
+			JSONObject jsonObject = (JSONObject) obj;
+			ServerName = String.valueOf(jsonObject.get("ServerName"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return ServerName;
 	}
 	public static void setServerName() {
-		
+		if (!isNull(configs[0].getText().toString())) {
+			ServerName = configs[0].getText().toString();
+		} else {
+			MsgBox.show("Error!", "Your server needs a name!", Contexts.configActivityContext);
+		}
 	}
 	
 	//Online Mode
@@ -47,6 +102,27 @@ public class ConfigKey
 		return onlineMode;
 	}
 	public static void setOnlineMode() {
-		
+		onlineMode = true;
+	}
+	
+	//Message of the Day (MOTD)
+	private static String MOTD;
+	public static String getMOTD() {
+		try {
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("/sdcard/GemsCraft/config.json"));
+			JSONObject jsonObject = (JSONObject) obj;
+			MOTD = String.valueOf(jsonObject.get("MOTD"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return MOTD;
+	}
+	public static void setMOTD() {
+		if (!isNull(configs[2].getText().toString())) {
+			ServerName = configs[2].getText().toString();
+		} else {
+			MsgBox.show("Error!", "You need to enter in a MOTD!", Contexts.configActivityContext);
+		}
 	}
 }
