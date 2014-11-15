@@ -6,6 +6,7 @@ public class Commands
 	public static Command[] cmdList = new Command[] {
 		new Command(),
 		new AFK(),
-		new ListCommands()
+		new ListCommands(),
+		new Shutdown()
 	};
 }

@@ -37,7 +37,6 @@ public class Log
 				new NullPointerException());
 		} else {
 			write(message, new Normal());
-			System.out.println("xxxxxxx");
 		}
 	}
 	public Log(String message, LogType lType) throws InvalidLogException {
@@ -48,7 +47,7 @@ public class Log
 			write(message, lType);
 		}
 	}
-	
+	public static String hbLogs;
 	String htmlEnd = "</body></html>";
 	void write(String message, LogType l) {
 		Constants.htmlStart += "<p style=\"" + l.hexColor + "\"" + "> " +
@@ -56,7 +55,7 @@ public class Log
 			message + "</p>";
 		String finalMessage = Constants.htmlStart + htmlEnd;
 		Constants.consoleTextView.setText(Html.fromHtml(finalMessage));
-		System.out.println(finalMessage);
+		
 	}
 	
 	

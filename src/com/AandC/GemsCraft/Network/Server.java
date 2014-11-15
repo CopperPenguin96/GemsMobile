@@ -36,7 +36,6 @@ public class Server
 	public static short playerCount() {
 		return (short) players().length;
 	}
-	public static Heartbeat heartBeat;
 	public static String URL;
 	public static void message(String mes) {
 		if (mes.equals(null)) {

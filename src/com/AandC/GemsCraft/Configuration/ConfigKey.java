@@ -31,6 +31,13 @@ import org.json.simple.parser.*;
  */
 public class ConfigKey
 {
+	private static String heartbeatURL = null;
+	public static String getHeartbeatUrl() {
+		return heartbeatURL;
+	}
+	public static void setHeartbeatUrl(String hb) {
+		heartbeatURL = hb;
+	}
 	
 	public static void prepareConfig() throws IOException, ParseException {
 		

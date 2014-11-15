@@ -11,6 +11,7 @@ import android.view.*;
 import com.AandC.GemsCraft.Commands.*;
 import com.AandC.GemsCraft.Players.*;
 import android.text.method.*;
+import com.AandC.GemsCraft.Network.Heartbeat.*;
 /*
  The MIT License (MIT)
 
@@ -40,6 +41,7 @@ public class ConsoleActivity extends Activity
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
 		setContentView(R.layout.server);
+		Files.createNeccessary();
 		getConsoleInfo();
 		Contexts.consoleActivityContext = this;
 		Constants.consoleTextView = (TextView) findViewById(R.id.txtConsole);
@@ -47,8 +49,8 @@ public class ConsoleActivity extends Activity
 		{
 			Log startLog = new Log("Welcome to GemsCraft! <br>" +
 				"Your server is attempting to start!");
-			Server.heartBeat = new Heartbeat();
-			Server.heartBeat.run();
+				
+			//Heartbeat.Start();
 			Log serverURL = new Log("Your server is running with URL " +
 				Server.URL);
 			Constants.consoleTextView.setMovementMethod(new ScrollingMovementMethod());
