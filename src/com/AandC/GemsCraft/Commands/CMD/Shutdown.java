@@ -38,8 +38,9 @@ public class Shutdown extends Command
 		if (secondsLeft > 0) {
 			try
 			{
-				new Log("×××Server will be shutting down in " + secondsLeft +
+				Log me = new Log("×××Server will be shutting down in " + secondsLeft +
 						" seconds!×××", new Warning());
+				me.Send();
 				Thread.sleep(1000);
 				secondsLeft -= 1;
 				if (!(secondsLeft > 0)) {

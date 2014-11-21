@@ -31,12 +31,18 @@ import com.AandC.GemsCraft.System.*;
  */
 public class Log
 {
+	String msg;
+	LogType toSrnd;
+	public void Send() {
+		write(msg, toSrnd);
+	}
 	public Log(String message) throws InvalidLogException {
 		if (message.equals(null)) {
 			throw new InvalidLogException("Log Message cannot be null",
 				new NullPointerException());
 		} else {
-			write(message, new Normal());
+			msg = message;
+			toSrnd = new Normal();
 		}
 	}
 	public Log(String message, LogType lType) throws InvalidLogException {
@@ -44,7 +50,8 @@ public class Log
 			throw new InvalidLogException("Log Message cannot be null",
 										  new NullPointerException());
 		} else {
-			write(message, lType);
+			msg = message;
+			toSrnd = lType;
 		}
 	}
 	public static String hbLogs;
@@ -55,8 +62,5 @@ public class Log
 			message + "</p>";
 		String finalMessage = Constants.htmlStart + htmlEnd;
 		Constants.consoleTextView.setText(Html.fromHtml(finalMessage));
-		
 	}
-	
-	
 }

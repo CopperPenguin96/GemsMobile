@@ -11,6 +11,7 @@ public class Logs
 		try
 		{
 			Log log = new Log(x);
+			log.Send();
 		}
 		catch (InvalidLogException ex) {
 			new Logs(ex);

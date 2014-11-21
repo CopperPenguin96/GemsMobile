@@ -49,10 +49,9 @@ public class ConsoleActivity extends Activity
 		{
 			Log startLog = new Log("Welcome to GemsCraft! <br>" +
 				"Your server is attempting to start!");
-				
-			//Heartbeat.Start();
-			Log serverURL = new Log("Your server is running with URL " +
-				Server.URL);
+			startLog.Send();
+			Heartbeat heartbeat = new Heartbeat();
+			heartbeat.run();
 			Constants.consoleTextView.setMovementMethod(new ScrollingMovementMethod());
 		} catch (InvalidLogException e) {
 			e.printStackTrace();
@@ -60,47 +59,54 @@ public class ConsoleActivity extends Activity
 	}
 	
 	public void performAction(View v) {
-		boolean[] foundGoodAl = new boolean[]{
-			false, false
-		};
-		Command lst = null;
 		EditText cmdBox = (EditText) findViewById(R.id.txtCommand);
-		String enteredText = cmdBox.getText().toString();
-		if (!enteredText.equals(null)) {
-			System.out.println(enteredText);
-			if (enteredText.substring(0,1).equals("/")) {
-				String cmdLower = enteredText.toLowerCase().substring(1);
-				System.out.println(cmdLower);
-				for (Command list:Commands.cmdList) {
-					System.out.println(list.getName());
-					if (list.getName().toLowerCase().equals(cmdLower)) {
-						list.p = getConsoleInfo();
-						getConsoleInfo().performCommand(list);
-						foundGoodAl[1] = true;
-					} else {
-						for (String alis:list.getAlliases()) {
-							if (alis.toLowerCase().equals(cmdLower)) {
-								System.out.println("Found an allias");
-								foundGoodAl[0] = true;
-								lst = list;
+		try {
+			boolean[] foundGoodAl = new boolean[]{
+				false, false
+			};
+			Command lst = null;
+			String enteredText = cmdBox.getText().toString();
+			if (!enteredText.equals(null)) {
+				System.out.println(enteredText);
+				if (enteredText.substring(0,1).equals("/")) {
+					String cmdLower = enteredText.toLowerCase().substring(1);
+					System.out.println(cmdLower);
+					for (Command list:Commands.cmdList) {
+						System.out.println(list.getName());
+						if (list.getName().toLowerCase().equals(cmdLower)) {
+							list.p = getConsoleInfo();
+							getConsoleInfo().performCommand(list);
+							foundGoodAl[1] = true;
+						} else {
+							for (String alis:list.getAlliases()) {
+								if (alis.toLowerCase().equals(cmdLower)) {
+									System.out.println("Found an allias");
+									foundGoodAl[0] = true;
+									lst = list;
+								}
 							}
 						}
 					}
+				} else {
+					Server.message(cmdBox.getText().toString(), getConsoleInfo());
 				}
 			}
-		}
-		if (foundGoodAl[0]) {
-			try {
-				lst.p = getConsoleInfo();
-				getConsoleInfo().performCommand(lst);
-			} catch (NullPointerException e) {
-				new Logs(e);
+			if (foundGoodAl[0]) {
+				try {
+					lst.p = getConsoleInfo();
+					getConsoleInfo().performCommand(lst);
+				} catch (NullPointerException e) {
+					new Logs(e);
+				}
+			} else {
+				if (!foundGoodAl[1]) {
+					getConsoleInfo().message("No such command \"" + "/" + enteredText.substring(1) + "\"");
+				}
 			}
-		} else {
-			if (!foundGoodAl[1]) {
-				getConsoleInfo().message("No such command \"" + "/" + enteredText.substring(1) + "\"");
-			}
+		} catch (StringIndexOutOfBoundsException ez) {
+			//Player sent nothing
 		}
+		cmdBox.setText("");
 	}
 	public Player getConsoleInfo() {
 		Player con = new Player();

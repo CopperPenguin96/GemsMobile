@@ -44,6 +44,7 @@ public class ListCommands extends Command
 		try
 		{
 			Log cmdListLog = new Log(cmdList);
+			cmdListLog.Send();
 		} catch (InvalidLogException e) {
 			new Logs(e);
 		}

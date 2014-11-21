@@ -37,6 +37,7 @@ public class Command
 		{
 			Log thisLog = new Log("Default Command Template was run" +
 				" by " + p.userName);
+			thisLog.Send();
 		} catch (InvalidLogException e) {
 			e.printStackTrace();
 		}

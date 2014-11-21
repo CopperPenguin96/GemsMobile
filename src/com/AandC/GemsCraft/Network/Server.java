@@ -37,19 +37,22 @@ public class Server
 		return (short) players().length;
 	}
 	public static String URL;
-	public static void message(String mes) {
+	public static void message(String mes, Player origin) {
 		if (mes.equals(null)) {
 			throw new NullPointerException();
 		} else {
+			mes = origin.Nick + ": " + mes;
 			try {
 				for (Player p:players()) {
 					p.message(mes);
 				}
 				Log l = new Log(mes);
+				l.Send();
 			} catch (Exception e) {
 				try
 				{
 					Log log = new Log(e.getStackTrace().toString());
+					log.Send();
 				} catch (InvalidLogException ec) {
 					ec.printStackTrace();
 				}

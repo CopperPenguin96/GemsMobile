@@ -32,7 +32,7 @@ public class AFK extends Command
 	{
 		if (!p.isAFK) {
 			p.isAFK = true;
-			Server.message(p.Nick + " is now AFK");
+			Server.message(p.Nick + " is now AFK", p);
 		} else {
 			p.message("You are already AFK!");
 		}
