@@ -11,8 +11,8 @@ public class Config
 		//Write to JSON file
 		JSONObject configObj = new JSONObject();
         configObj.put("ServerName", ConfigKey.getServerName());
-        configObj.put("Port", ConfigKey.getPort());
 		configObj.put("MOTD", ConfigKey.getMOTD());
+        configObj.put("Port", ConfigKey.getPort());
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}

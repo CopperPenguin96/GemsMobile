@@ -6,6 +6,9 @@ import com.AandC.GemsCraft.System.*;
 import android.widget.*;
 import org.json.*;
 import java.io.*;
+import android.view.*;
+import android.nfc.*;
+import com.AandC.GemsCraft.Exceptions.*;
 /*
  The MIT License (MIT)
 
@@ -48,6 +51,38 @@ public class ConfigActivity extends Activity
 			textBoxes[0].setText(ConfigKey.getServerName());
 			textBoxes[1].setText("" + ConfigKey.getPort());
 			textBoxes[2].setText(ConfigKey.getMOTD());
+		}
+	}
+	public void save(View v) {
+		try {
+			String name = textBoxes[0].getText().toString();
+			String Port = textBoxes[1].getText().toString();
+			String MO = textBoxes[2].getText().toString();
+			int FormattedPort = Integer.parseInt(Port);
+			if (FormattedPort >= 65535 || FormattedPort < 0) {
+				throw new NumberFormatException();
+			}
+			if (name.length() > 40) {
+				throw new ServerNameFormatException();
+			}
+			try
+			{
+				ConfigKey.setServerName();
+				ConfigKey.setPort();
+				ConfigKey.setMOTD();
+				MsgBox.show("Server Name = " + textBoxes[0].getText().toString(),
+					"MOTD = " + textBoxes[2].getText().toString(), this);
+				Config.writeConfig();
+			} catch (Exception e) {
+				MsgBox.show("Errors", "There was a serious error that has caused the app to close", this);
+				System.exit(0);
+			}
+		} catch (NullPointerException ex) {
+			MsgBox.show("Errors", "Please fill in all items", this);
+		} catch (NumberFormatException ex) {
+			MsgBox.show("Errors","Invalid Port", this);
+		} catch (ServerNameFormatException ex) {
+			MsgBox.show("Errors","Server Name is too long!", this);
 		}
 	}
 }

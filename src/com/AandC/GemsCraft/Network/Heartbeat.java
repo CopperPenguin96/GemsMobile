@@ -5,6 +5,7 @@ import java.io.*;
 import com.AandC.GemsCraft.Console.*;
 import com.AandC.GemsCraft.Exceptions.*;
 import com.AandC.GemsCraft.Console.LogTypes.*;
+import android.os.*;
 
 public class Heartbeat
 {
@@ -31,6 +32,8 @@ public class Heartbeat
 	}
 
 	public void run() {
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy); 
 		String heartbeat_url = "http://www.classicube.net/server/heartbeat?";
 		heartbeat_url = heartbeat_url + "port=60001";
 		heartbeat_url = heartbeat_url + "&max=20";
@@ -57,12 +60,14 @@ public class Heartbeat
 				this.already_printed_url = true;
 			}
 		} catch(Exception e) {
+			
+			System.out.println(e.toString());
 			try
 			{
 				Log mK = new Log("" + e.getMessage(), new Warning());
+			} catch (InvalidLogException e2) {
+				e2.printStackTrace();
 			}
-			catch (InvalidLogException e2)
-			{}
 		}
 		this.timer = System.currentTimeMillis();
 	}

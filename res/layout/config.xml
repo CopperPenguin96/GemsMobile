@@ -114,6 +114,7 @@
 	<Button
 		android:layout_height="wrap_content"
 		android:text="Save"
+		android:onClick="save"
 		android:layout_width="match_parent"
 		android:layout_below="@id/configRelativeLayout1"
 		android:id="@+id/btnSave"/>
